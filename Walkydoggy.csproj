@@ -11,4 +11,9 @@
     <PackageReference Include="MahApps.Metro.IconPacks" Version="4.11.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
 </Project>
