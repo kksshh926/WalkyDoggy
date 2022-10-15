@@ -29,7 +29,7 @@
                             Orientation="Vertical"
                             Margin="0,35,0,0">
 
-                <Image Source="C:\Users\user\OneDrive\바탕 화면\Walkydoggy_error-master\Walkydoggy_error-master\Images\walkyDog.png"
+                <Image 
                            Width="100" Height="100"/>
 
                 <TextBlock Text="Walky Doggy"
@@ -61,7 +61,7 @@
                              Padding="20,0,0,0">
 
                     <TextBox.Background>
-                        <ImageBrush ImageSource="C:\Users\user\OneDrive\바탕 화면\Walkydoggy_error-master\Walkydoggy_error-master\Images\user.png"
+                        <ImageBrush 
                                         Stretch="None"
                                         AlignmentX="Left"/>
                     </TextBox.Background>
@@ -88,7 +88,7 @@
                              Padding="20,0,0,0">
 
                     <PasswordBox.Background>
-                        <ImageBrush ImageSource="C:\Users\user\OneDrive\바탕 화면\Walkydoggy_error-master\Walkydoggy_error-master\Images\key.png"
+                        <ImageBrush 
                                         Stretch="None"
                                         AlignmentX="Left"/>
                     </PasswordBox.Background>

@@ -70,7 +70,7 @@
 
                 <TextBlock Text="November" Foreground="#FF7012" FontSize="24" TextAlignment="Center" FontWeight="Bold" Margin="0 0 0 20"/>
 
-                <Calendar CalendarItemStyle="{DynamicResource CalendarCalendarItemStyle1}" CalendarDayButtonStyle="{DynamicResource CalendarCalendarDayButtonStyle1}" Style="{DynamicResource CalendarStyle1}"/>
+                <Calendar SelectedDatesChanged="Calendar_SelectedDatesChanged" CalendarItemStyle="{DynamicResource CalendarCalendarItemStyle1}" CalendarDayButtonStyle="{DynamicResource CalendarCalendarDayButtonStyle1}" Style="{DynamicResource CalendarStyle1}"/>
             </StackPanel>
 
             <Button Click="btnPlus_Click" Style="{StaticResource button}" Grid.Column="1" Cursor="Hand" >
@@ -95,11 +95,10 @@
                 <!--Filter Textbox-->
                 <Grid Width="150" HorizontalAlignment="Right" Grid.Row="4">
                     <TextBlock Text="Search" Grid.Row="4" FontSize="13" FontWeight="Bold" Margin="-40 0 0 0" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <TextBlock Margin="15 0" VerticalAlignment="Center" Foreground="#B0B9C6" IsHitTestVisible="False"
-                           Panel.ZIndex="1" Text="Search in Members ..."/>
+                    <TextBox Name="txt_SearchText" Text="{Binding Path=SearchText, UpdateSourceTrigger=PropertyChanged}" TextChanged="txt_SearchText_TextChanged" Margin="15 0" VerticalAlignment="Center" Foreground="#B0B9C6" Panel.ZIndex="1"/>
                     <TextBox Foreground="#4C4C4C" Margin="10 0" Name="textBoxFilter" Style="{StaticResource filterTextBox}"/>
                 </Grid>
-                <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" MouseDoubleClick="membersDataGrid_MouseDoubleClick">
+                <DataGrid ItemsSource="{Binding BoardList}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" MouseDoubleClick="membersDataGrid_MouseDoubleClick">
                     <DataGrid.Columns>
                         <DataGridCheckBoxColumn Header="C" CanUserResize="False" Width="auto">
                             <DataGridCheckBoxColumn.HeaderTemplate>
@@ -109,7 +108,7 @@
                             </DataGridCheckBoxColumn.HeaderTemplate>
                         </DataGridCheckBoxColumn>
                         <DataGridTextColumn Header="NUM"  IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Number}"/>
-                        <DataGridTextColumn Header="BREED" IsReadOnly="True" Width="100"/>
+                        <DataGridTextColumn Header="BREED" IsReadOnly="True" Width="100" Binding="{Binding Breed}"/>
                         <DataGridTemplateColumn Header="TITLE" IsReadOnly="True" Width="100"/>
                     </DataGrid.Columns>
                 </DataGrid>
