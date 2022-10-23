@@ -86,11 +86,16 @@ namespace Walkydoggy.View
             Uri uri = new Uri("/Views/Register.xaml", UriKind.Relative);
             NavigationService.Navigate(uri);
         }
-        private void ForgotPassword_Click(object sender, RoutedEventArgs e)
+        private void btn_Reset_ID_Click(object sender, RoutedEventArgs e)
         {
-            Uri uri = new Uri("/Views/Find_PSSWD.xaml", UriKind.Relative);
-            NavigationService.Navigate(uri);
+            Walkydoggy.Views.Find_ID find_ID = new Walkydoggy.Views.Find_ID();
+            find_ID.Show();
         }
-        
+        private void btn_Reset_PSSWD_Click(object sender, RoutedEventArgs e)
+        {
+            Walkydoggy.View.Find_PSSWD find_PSSWD = new Walkydoggy.View.Find_PSSWD();
+            find_PSSWD.Show();
+        }
+
     }
 }
