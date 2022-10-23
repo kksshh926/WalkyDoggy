@@ -10,10 +10,6 @@ namespace Walkydoggy.Models
 {
     public class User : Notifier
     {
-
-
-
-
         private string _RuDog;
 
         public String RuDog
@@ -31,9 +27,9 @@ namespace Walkydoggy.Models
 
 
         //blob 타입 이미지 
-        private string _Image;
+        private byte[] _Image;
 
-        public String Image
+        public byte[] Image
         {
             get
             {
@@ -114,7 +110,7 @@ namespace Walkydoggy.Models
             }
         }
 
-        // 이름만 등록해보기 테스트 
+        public object id { get; internal set; }
 
 
         //로그인 
@@ -135,8 +131,8 @@ namespace Walkydoggy.Models
             Name = username;
             Bio = bio;
         }
-
-        public User(string rudog, string id, string pw, string username, string img, string bio)
+        //회원가입 (사진이랑)
+        public User(string rudog, string id, string pw, string username, byte[] img, string bio)
         {
             RuDog = rudog;
             Id = id;

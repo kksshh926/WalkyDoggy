@@ -41,7 +41,7 @@ namespace Walkydoggy.Commands
 
         public void Execute(object parameter)
         {
-            _ViewModel.FindUser();
+           // _ViewModel.FindUser();
         }
 
         public static implicit operator UserLoginCommand(RelayCommand v)
