@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Walkydoggy.ViewModels;
+using Walkydoggy.View;
 
 namespace Walkydoggy.Commands
 {
@@ -16,8 +17,7 @@ namespace Walkydoggy.Commands
         }
 
         public UserUpdateCommand()
-        {
-        }
+        {}
 
         private UserViewModel _ViewModel;
 
@@ -36,7 +36,7 @@ namespace Walkydoggy.Commands
 
         public void Execute(object parameter)
         {
-            _ViewModel.SaveChanges();
+            //_ViewModel.SaveChanges();
         }
     }
 }

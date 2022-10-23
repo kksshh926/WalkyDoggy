@@ -1,18 +1,107 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Data;
+using System.IO;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 using Walkydoggy.Commands;
+using System.Linq;
+using System.Threading.Tasks;
 using Walkydoggy.Models;
+
 
 namespace Walkydoggy.ViewModels
 {
 
-    internal class UserViewModel : Notifier
+    internal class UserViewModel : ViewModelBase
     {
-        string Conn = "SERVER=localhost;DATABASE=walkydog;UID=root;PASSWORD=201933043";
+
+        private string _RuDog;
+        private byte[] _Image;
+        private string _Bio;
+        private string _Pw;
+        private string _Id;
+        private string _Name;
+
+        public String RuDog
+        {
+            get
+            {
+                return _RuDog;
+            }
+            set
+            {
+                _RuDog = value;
+                SetProperty<string>(ref _RuDog, value);
+            }
+        }
+
+        public String Bio
+        {
+            get
+            {
+                return _Bio;
+            }
+            set
+            {
+                SetProperty<string>(ref _Bio, value);
+            }
+        }
+
+
+
+        public String Pw
+        {
+            get
+            {
+                return _Pw;
+            }
+            set
+            {
+                SetProperty<string>(ref _Pw, value);
+            }
+        }
+
+
+
+
+        public String Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                SetProperty<string>(ref _Id, value);
+            }
+        }
+
+
+
+
+        public String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                SetProperty<string>(ref _Name, value);
+            }
+        }
+        string Conn = "SERVER=kksshh926.cafe24.com;DATABASE=kksshh926;UID=kksshh926;PASSWORD=sojin0713!";
         //새 인스턴스 초기화 
         public UserViewModel()
         {
@@ -29,7 +118,6 @@ namespace Walkydoggy.ViewModels
 
 
         }
-
         public INavigation Navigation { get; set; }
 
         public UserViewModel(INavigation navigation)
@@ -39,10 +127,6 @@ namespace Walkydoggy.ViewModels
                 LoginClickCommand = new UserLoginCommand(() => ExecuteLoginClickCommand());*/
 
         }
-
-
-
-
 
         // 업뎃 가능한 상태인지 나타내는거 
         public bool CanUpdate
@@ -83,18 +167,22 @@ namespace Walkydoggy.ViewModels
         //회원가입
         public void SaveChanges()
         {
-
-
             // Debug.Assert(false, String.Format("{0} was a updated.", User.Name));
 
             using (MySqlConnection conn = new MySqlConnection(Conn))
             {
-                conn.Open();
-                MySqlCommand msc = new MySqlCommand("INSERT INTO user(rudog,id,pw,name,bio) values('" + User.RuDog + "','" + User.Id + "','" + User.Pw + "','" + User.Name + "','" + User.Bio + "');", conn);
-                // MySqlCommand msc = new MySqlCommand("INSERT INTO user(rudog,id,pw,name,bio) values('a','b','c','f','f');", conn); 잘들어가는것 확인
-                msc.ExecuteNonQuery();
+                try
+                {
+                    conn.Open();
+                    MySqlCommand msc = new MySqlCommand("INSERT INTO USERS(id,pw,name,image,bio,type) values('" + User.Id + "','" + User.Pw + "','" + User.Name + "','" + User.Image + "','" + User.Bio + "','" + User.RuDog + "');", conn);
+                    msc.ExecuteNonQuery();
+                    MessageBox.Show("회원가입 완료");
+                }
+                catch(Exception)
+                {
+                    MessageBox.Show("다시 시도해 주세요.");
+                }
             }
-
         }
 
 
@@ -108,6 +196,8 @@ namespace Walkydoggy.ViewModels
             {
                 // Some logic here
                 _whoiam = value;
+                SetProperty<IEnumerable<User>>(ref _whoiam, value);
+
                 OnPropertyChanged("Whoiam");
             }
         }
@@ -144,5 +234,6 @@ namespace Walkydoggy.ViewModels
             User.RuDog = Selectedwho.RuDog;
         }
         //끝: 강아지 or 사람 설정 
+
     }
 }

@@ -18,7 +18,7 @@ namespace Walkydoggy.ViewModels
 
     internal class LoginViewModel : Notifier
     {
-        string Conn = "SERVER=localhost;DATABASE=walkydog;UID=root;PASSWORD=201933043";
+        string Conn = "SERVER=kksshh926.cafe24.com;DATABASE=kksshh926;UID=kksshh926;PASSWORD=sojin0713!";
         public LoginViewModel(Page page)
         {
             _User = new User();
@@ -31,6 +31,7 @@ namespace Walkydoggy.ViewModels
 
             LoginCommand = new Command(_execute, _canexecute);
             // RegisterClickCommand = new Command(async () => await ExecuteRegisterClickCommand());
+
 
         }
 
@@ -45,7 +46,7 @@ namespace Walkydoggy.ViewModels
             bool b = FindUser();
             if (b)
             {
-                page1.NavigationService.Navigate(new Uri("Views/Matching.xaml", UriKind.Relative));
+                page1.NavigationService.Navigate(new Uri("Views/Paging.xaml", UriKind.Relative));
 
             }
 

@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Walkydoggy.View"
+        xmlns:us="clr-namespace:Walkydoggy.UserContorls"
+        xmlns:local1="clr-namespace:Walkydoggy.ViewModels"
         mc:Ignorable="d"
         Title="Login" Height="550" Width="800">
     <Grid>
@@ -40,14 +42,14 @@
                                HorizontalAlignment="Center"/>
 
 
-                <TextBlock Text="Username"
+                <TextBlock Text="ID"
                                Foreground="#FF7012"
                                FontSize="12"
                                FontWeight="Bold"
                                FontFamily="Montserrat"                             
                                Margin="0,35,0,0"/>
 
-                <TextBox x:Name="txtUser"
+                <TextBox Text="{Binding Id}"
                              FontSize="13"
                              FontWeight="Medium"
                              FontFamily="Montserrat"                            
@@ -74,7 +76,8 @@
                                FontFamily="Montserrat"                             
                                Margin="0,15,0,0"/>
 
-                <PasswordBox x:Name="txtPass"
+                <TextBox Text="{Binding Pw}"
+
                              FontSize="13"
                              FontWeight="Medium"
                              FontFamily="Montserrat"                            
@@ -85,18 +88,11 @@
                              Height="28"
                              VerticalContentAlignment="Center"
                              Margin="0,5,0,0"
-                             Padding="20,0,0,0">
-
-                    <PasswordBox.Background>
-                        <ImageBrush 
-                                        Stretch="None"
-                                        AlignmentX="Left"/>
-                    </PasswordBox.Background>
-                </PasswordBox>
+                             Padding="20,0,0,0"/>
 
                 <Button x:Name="btnRegister"                          
                             BorderThickness="0"
-                            Content="REGISTER"
+                            Content="SignUp"
                             Foreground="White"
                             FontSize="12"
                             FontWeight="Bold"
@@ -128,9 +124,12 @@
                     </Button.Template>
                 </Button>
 
-                <Button x:Name="btnLogin"                          
-                            BorderThickness="0"
-                            Content="LOG IN"
+                <Button x:Name="btnLogin"
+                        Command="{Binding LoginCommand}"
+                        CommandParameter="로그인되었습니다."
+                        IsDefault="True"
+                        BorderThickness="0"
+                            Content="LOGIN"
                             Foreground="White"
                             FontSize="12"
                             FontWeight="Bold"
