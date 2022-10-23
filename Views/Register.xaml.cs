@@ -71,6 +71,14 @@ namespace Walkydoggy.View
             {
                 MessageBox.Show("이름을 입력해주세요");
             }
+            else if (this.userViewModel.Email == null)
+            {
+                MessageBox.Show("이름을 입력해주세요");
+            }
+            else if (this.userViewModel.KakaoId == null)
+            {
+                MessageBox.Show("이름을 입력해주세요");
+            }
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(Conn))
@@ -79,7 +87,7 @@ namespace Walkydoggy.View
                     using (var msc = conn.CreateCommand())
                     {
 
-                        msc.CommandText = $@"INSERT INTO USERS(id,pw,name,image,bio,type) values(@id, @pw, @name, @image, @bio, @type)";
+                        msc.CommandText = $@"INSERT INTO USERS(id,pw,name,image,bio,type,email,kakaoid) values(@id, @pw, @name, @image, @bio, @type,@email,@kakaoid)";
                         if (File.Exists(this.txt_PhotoPath.Text))
                         {
                             byte[] binary = File.ReadAllBytes(this.txt_PhotoPath.Text);
@@ -91,6 +99,8 @@ namespace Walkydoggy.View
                         msc.Parameters.Add(new MySqlParameter("name", this.userViewModel.Name));
                         msc.Parameters.Add(new MySqlParameter("bio", this.userViewModel.Bio));
                         msc.Parameters.Add(new MySqlParameter("type", this.userViewModel.User.RuDog));
+                        msc.Parameters.Add(new MySqlParameter("email", this.userViewModel.User.RuDog));
+                        msc.Parameters.Add(new MySqlParameter("kakaoid", this.userViewModel.User.RuDog));
 
                         msc.ExecuteNonQuery();
 

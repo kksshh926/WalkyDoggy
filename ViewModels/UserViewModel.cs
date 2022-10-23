@@ -32,7 +32,34 @@ namespace Walkydoggy.ViewModels
         private string _Pw;
         private string _Id;
         private string _Name;
+        private string _Email;
+        private string _KakaoId;
 
+
+        public String Email
+        {
+            get
+            {
+                return _Email;
+            }
+            set
+            {
+                _Email = value;
+                SetProperty<string>(ref _Email, value);
+            }
+        }
+        public String KakaoId
+        {
+            get
+            {
+                return _KakaoId;
+            }
+            set
+            {
+                _KakaoId = value;
+                SetProperty<string>(ref _KakaoId, value);
+            }
+        }
         public String RuDog
         {
             get
