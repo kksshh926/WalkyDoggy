@@ -92,7 +92,7 @@ namespace Walkydoggy.ViewModels
                 {
                     return false;
                 }
-                return false;
+       
             }
 
         }
