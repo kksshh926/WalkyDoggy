@@ -165,7 +165,7 @@ namespace Walkydoggy.View
                         else
                             cmd.Parameters.Add(new MySqlParameter("imagefile", null));
 
-                        cmd.Parameters.Add(new MySqlParameter("id", "test"));
+                        cmd.Parameters.Add(new MySqlParameter("id", Common.UserInfo.Id));
                         cmd.Parameters.Add(new MySqlParameter("date_published", DateTime.Now));
                         cmd.Parameters.Add(new MySqlParameter("date", new DateTime(this.viewModel.Selectyear.Value, this.viewModel.Selectmonth.Value, this.viewModel.Selectday.Value)));
                         cmd.Parameters.Add(new MySqlParameter("age", this.viewModel.DogAge));
@@ -173,9 +173,10 @@ namespace Walkydoggy.View
                         cmd.Parameters.Add(new MySqlParameter("nameofdog", this.viewModel.DogName));
                         cmd.Parameters.Add(new MySqlParameter("plasticbag", Convert.ToInt32(plasticBag)));
 
-                        cmd.ExecuteNonQuery();
-
-                        MessageBox.Show("등록되었습니다.");
+                        if (cmd.ExecuteNonQuery() > 0)
+                            MessageBox.Show("등록되었습니다.");
+                        else
+                            throw new Exception("등록오류");
                     }
 
                     conn.Close();
@@ -185,7 +186,7 @@ namespace Walkydoggy.View
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
     }

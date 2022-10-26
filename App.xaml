@@ -5,7 +5,8 @@
              xmlns:fa="http://schemas.fontawesome.io/icons/"
              xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             StartupUri="MainWindow.xaml"             
+             StartupUri="MainWindow.xaml"     
+             Exit="App_Exit"
              xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
     
     <Application.Resources>

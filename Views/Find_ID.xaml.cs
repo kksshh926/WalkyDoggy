@@ -59,35 +59,37 @@ namespace Walkydoggy.Views
             string userName = this.userViewModel.Name;
             if (userEmail == "" || userName == "")
                 return false;
-            using (MySqlConnection conn = new MySqlConnection(Conn))
+            try
             {
-                DataSet ds = new DataSet();
-                string sql = "SELECT name FROM USERS WHERE email = '" + userViewModel.Email + "' and kakaoid = '" + userViewModel.KakaoId + "';";
-                MySqlDataAdapter adpt = new MySqlDataAdapter(sql, conn);
-                adpt.Fill(ds, "users");
-                try
+
+                using (MySqlConnection conn = new MySqlConnection(Conn))
                 {
-                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    conn.Open();
+
+                    DataSet ds = new DataSet();
+                    string sql = $@"SELECT id FROM USERS WHERE email = '{userEmail.Trim().Replace(" ", "")}' and name = '{userName.Trim().Replace(" ", "")}';";
+                    MySqlDataAdapter adpt = new MySqlDataAdapter(sql, conn);
+                    adpt.Fill(ds, "users");
+
+                    if (ds.Tables[0].Rows.Count > 0)
                     {
-                        this.userViewModel.Bio = ds.Tables[0].Rows[0]["Email"].ToString();
-                        this.userViewModel.Bio = ds.Tables[0].Rows[0]["KakaoId"].ToString();
-
-                        if (userEmail == this.userViewModel.Email && userName == this.userViewModel.Name)
-                        {
-
-                            MessageBox.Show("아이디는: "+sql+" 입니다.");
-                            return true;
-
-                        }//값 잘 받는것 확인 
-                         // return false;
+                        var id = ds.Tables[0].Rows[0]["id"].ToString();
+                        MessageBox.Show("아이디는: " + ds.Tables[0].Rows[0]["id"] + " 입니다.");
                     }
-                    MessageBox.Show("없는 정보입니다. 다시 확인해주세요.");
-                    return false;
+                    else
+                        throw new Exception("없는 정보입니다. 다시 확인해주세요.");
+
+                    conn.Close();
+                    this.Close();
                 }
-                catch (Exception e)
-                {
-                    return false;
-                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+
+                return false;
             }
         }
     }

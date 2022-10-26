@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,7 @@ namespace Walkydoggy.ViewModels
 
         private string content = string.Empty;
 
+        private string post = string.Empty;
 
         public List<int> Whatyear
         {
@@ -87,6 +89,26 @@ namespace Walkydoggy.ViewModels
         {
             get { return content; }
             set { SetProperty<string>(ref content, value); }
+        }
+
+        public string Post
+        {
+            get { return post; }
+            set { SetProperty<string>(ref post, value); }
+        }
+    }
+
+    public class Message
+    {
+        public string Name { get; set; } = string.Empty;
+
+        public string Content { get; set; } = string.Empty;
+
+        public DateTime Time { get; set; } = DateTime.Now;
+
+        public override string ToString()
+        {
+            return $@"{this.Name} : {this.Content}  {this.Time.ToString("HH:mm")}";
         }
     }
 }

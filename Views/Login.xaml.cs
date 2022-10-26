@@ -42,35 +42,59 @@ namespace Walkydoggy.View
             using (MySqlConnection conn = new MySqlConnection(Conn))
             {
                 DataSet ds = new DataSet();
-                string sql = "SELECT id,pw,type,name,bio,image FROM USERS WHERE id = '" + userViewModel.Id + "' and pw = '" + userViewModel.Pw + "';";
+                string sql = "SELECT id,pw,type,name,bio,image FROM USERS WHERE id = '" + userid + "' and pw = '" + userpw + "';";
                 MySqlDataAdapter adpt = new MySqlDataAdapter(sql, conn);
                 adpt.Fill(ds, "users");
+
                 try
                 {
-                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    if (ds.Tables[0].Rows.Count > 0)
                     {
 
-                        this.userViewModel.RuDog = ds.Tables[0].Rows[0]["Type"].ToString();
-                        this.userViewModel.Id = ds.Tables[0].Rows[0]["Id"].ToString();
-                        this.userViewModel.Pw = ds.Tables[0].Rows[0]["Pw"].ToString();
-                        string v = ds.Tables[0].Rows[0]["Name"].ToString();
-                        this.userViewModel.Name = v;
-                        this.userViewModel.Bio = ds.Tables[0].Rows[0]["Bio"].ToString();
-                        if (userid == this.userViewModel.Id && userpw == this.userViewModel.Pw)
-                        {
-                            Uri uri = new Uri("/Views/Paging.xaml", UriKind.Relative);
-                            NavigationService.Navigate(uri);
-                            MessageBox.Show("로그인 성공.");
-                            return true;
 
-                        }//값 잘 받는것 확인 
-                           // return false;
+                        //for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                        //{
+
+                        var row = ds.Tables[0].Rows[0];
+                        //의미없는 코드 주석처리
+                        //this.userViewModel.RuDog = row["Type"].ToString();
+                        //this.userViewModel.Id = row["Id"].ToString();
+                        //this.userViewModel.Pw = row["Pw"].ToString();
+                        //string v = ds.Tables[0].Rows[0]["Name"].ToString();
+                        //this.userViewModel.Name = v;
+                        //this.userViewModel.Bio = ds.Tables[0].Rows[0]["Bio"].ToString();
+                        //if (userid == this.userViewModel.Id && userpw == this.userViewModel.Pw)
+                        //{
+
+                        //웹상 세션과 동일한 역활을 하기위한 정보 저장
+                        //실무에서는 로그인 API 에서 Access Token, Refresh Token 등 발급받아 클라이언트에서 발급받은 Token 정보로 Http 프로토콜에 Authorization 헤더 추가 후 API 통신하는것을 배워보세요
+                        //Mqtt Topic 에 사용될 유저 정보니까 Mqtt에 Topic 을 어떻게 생성하는지 이 프로젝트에서 Subscript 쪽을 분석해보세요
+                        Common.UserInfo = new User
+                        {
+                            //Type = (string)row["type"],
+                            Id = row["id"].ToString(),
+                            Image = row["image"] == DBNull.Value ? null : (byte[])row["image"],
+                            Name = row["name"].ToString(),
+                            Bio = row["bio"].ToString()
+                        };
+
+                        //로그인 성공시 브로커 서버 초기화
+                        MyMqtt.M2MqttInitializeClient();
+
+                        Uri uri = new Uri("/Views/Paging.xaml", UriKind.Relative);
+                        NavigationService.Navigate(uri);
+                        //MessageBox.Show("로그인 성공.");
+                        return true;
+
+                        //}
                     }
-                    MessageBox.Show("없는 정보입니다. 다시 확인해주세요.");
-                    return false;
+                    else
+                        throw new Exception("없는 정보입니다. 다시 확인해주세요.");
+                    
                 }
                 catch (Exception e)
                 {
+                    MessageBox.Show(e.Message);
                     return false;
                 }
             }

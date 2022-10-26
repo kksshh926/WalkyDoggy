@@ -93,6 +93,18 @@ namespace Walkydoggy.Models
             }
         }
 
+        private string _type;
+
+        public string Type
+        {
+            get { return this._type; }
+            set
+            {
+                this._type = value;
+                OnPropertyChanged("Type");
+            }
+        }
+
 
 
         private string _Name;
@@ -109,9 +121,6 @@ namespace Walkydoggy.Models
                 OnPropertyChanged("Name");
             }
         }
-
-        public object id { get; internal set; }
-
 
         //로그인 
         public User(string id, string pw)

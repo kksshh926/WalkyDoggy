@@ -9,8 +9,8 @@
       xmlns:local="clr-namespace:Walkydoggy.View"
       mc:Ignorable="d" 
       d:DesignHeight="550" d:DesignWidth="800"
+      Loaded="Page_Loaded"
       Title="Paging">
-
 
     <Grid>
         <!--Grid Background-->
@@ -39,11 +39,11 @@
                         <fa:ImageAwesome Icon="AngleLeft" Style="{StaticResource angle}"/>
                     </Button>
 
-                    <Button Content="2020" Style="{StaticResource button}"/>
-                    <Button Content="2021" Style="{StaticResource button}"/>
-                    <Button Content="2022" Style="{StaticResource button}" Foreground="#FF7012" FontSize="24"/>
-                    <Button Content="2023" Style="{StaticResource button}"/>
-                    <Button Content="2024" Style="{StaticResource button}"/>
+                    <Button Name="btn_Year2020" Click="YearButton_Click" Content="2020" Style="{StaticResource button}" Cursor="Hand"/>
+                    <Button Name="btn_Year2021" Click="YearButton_Click" Content="2021" Style="{StaticResource button}" Cursor="Hand"/>
+                    <Button Name="btn_Year2022" Click="YearButton_Click" Content="2022" Style="{StaticResource button}" Cursor="Hand"/>
+                    <Button Name="btn_Year2023" Click="YearButton_Click" Content="2023" Style="{StaticResource button}" Cursor="Hand"/>
+                    <Button Name="btn_Year2024" Click="YearButton_Click" Content="2024" Style="{StaticResource button}" Cursor="Hand"/>
 
                     <Button Style="{StaticResource button}">
                         <fa:ImageAwesome Icon="AngleRight" Style="{StaticResource angle}"/>
@@ -52,25 +52,25 @@
 
                 <!--Month Selection-->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Content="1" Style="{StaticResource buttonMonth}"/>
-                    <Button Content="2" Style="{StaticResource buttonMonth}"/>
-                    <Button Content="3" Style="{StaticResource buttonMonth}"/>
-                    <Button Content="4" Style="{StaticResource buttonMonth}"/>
-                    <Button Content="5" Style="{StaticResource buttonMonth}"/>
-                    <Button Content="6" Style="{StaticResource buttonMonth}"/>
-                    <Button Content="7" Style="{StaticResource buttonMonth}"/>
-                    <Button Content="8" Style="{StaticResource buttonMonth}"/>
-                    <Button Content="9" Style="{StaticResource buttonMonth}"/>
-                    <Button Content="10" Style="{StaticResource buttonMonth}" Cursor="Hand"/>
-                    <Button Content="11" Style="{StaticResource buttonMonth}" Foreground="#FF7012" FontWeight="SemiBold"/>
-                    <Button Content="12" Style="{StaticResource buttonMonth}"/>
+                    <Button Name="btn_Month1"  Click="MonthButton_Click" Content="1" Style="{StaticResource buttonMonth}" Cursor="Hand"/>
+                    <Button Name="btn_Month2"  Click="MonthButton_Click" Content="2" Style="{StaticResource buttonMonth}" Cursor="Hand"/>
+                    <Button Name="btn_Month3"  Click="MonthButton_Click" Content="3" Style="{StaticResource buttonMonth}" Cursor="Hand"/>
+                    <Button Name="btn_Month4"  Click="MonthButton_Click" Content="4" Style="{StaticResource buttonMonth}" Cursor="Hand"/>
+                    <Button Name="btn_Month5"  Click="MonthButton_Click" Content="5" Style="{StaticResource buttonMonth}" Cursor="Hand"/>
+                    <Button Name="btn_Month6"  Click="MonthButton_Click" Content="6" Style="{StaticResource buttonMonth}" Cursor="Hand"/>
+                    <Button Name="btn_Month7"  Click="MonthButton_Click" Content="7" Style="{StaticResource buttonMonth}" Cursor="Hand"/>
+                    <Button Name="btn_Month8"  Click="MonthButton_Click" Content="8" Style="{StaticResource buttonMonth}" Cursor="Hand"/>
+                    <Button Name="btn_Month9"  Click="MonthButton_Click" Content="9" Style="{StaticResource buttonMonth}" Cursor="Hand"/>
+                    <Button Name="btn_Month10" Click="MonthButton_Click" Content="10" Style="{StaticResource buttonMonth}" Cursor="Hand"/>
+                    <Button Name="btn_Month11" Click="MonthButton_Click" Content="11" Style="{StaticResource buttonMonth}" Cursor="Hand"/>
+                    <Button Name="btn_Month12" Click="MonthButton_Click" Content="12" Style="{StaticResource buttonMonth}" Cursor="Hand"/>
                 </StackPanel>
 
                 <Separator Height="0.8" Background="#CACACA" Margin="30 10"/>
 
-                <TextBlock Text="November" Foreground="#FF7012" FontSize="24" TextAlignment="Center" FontWeight="Bold" Margin="0 0 0 20"/>
+                <TextBlock Name="txtCalendarMonth" Text="November" Foreground="#FF7012" FontSize="24" TextAlignment="Center" FontWeight="Bold" Margin="0 0 0 20"/>
 
-                <Calendar SelectedDatesChanged="Calendar_SelectedDatesChanged" CalendarItemStyle="{DynamicResource CalendarCalendarItemStyle1}" CalendarDayButtonStyle="{DynamicResource CalendarCalendarDayButtonStyle1}" Style="{DynamicResource CalendarStyle1}"/>
+                <Calendar Name="cal_CurrDate" SelectedDatesChanged="Calendar_SelectedDatesChanged" CalendarItemStyle="{DynamicResource CalendarCalendarItemStyle1}" CalendarDayButtonStyle="{DynamicResource CalendarCalendarDayButtonStyle1}" Style="{DynamicResource CalendarStyle1}"/>
             </StackPanel>
 
             <Button Click="btnPlus_Click" Style="{StaticResource button}" Grid.Column="1" Cursor="Hand" >
@@ -80,11 +80,11 @@
             <StackPanel Grid.Column="1">
                 <!--Titles-->
                 <StackPanel Margin="30 45 30 10" Orientation="Horizontal">
-                    <TextBlock Text="16" FontSize="50" Foreground="#FFFFFF"/>
+                    <TextBlock Name="txtCurrDay" Text="16" FontSize="50" Foreground="#FFFFFF"/>
 
                     <StackPanel Grid.Column="1" Margin="10 0 0 0" VerticalAlignment="Center">
-                        <TextBlock Text="November" Foreground="#FFFFFF" FontSize="24"/>
-                        <TextBlock Text="Monday" Foreground="#FFCA6C" FontSize="14"/>
+                        <TextBlock Name="txtCurrMonth" Text="November" Foreground="#FFFFFF" FontSize="24"/>
+                        <TextBlock Name="txtCurrDate" Text="Monday" Foreground="#FFCA6C" FontSize="14"/>
                     </StackPanel>
                 </StackPanel>
 
