@@ -10,27 +10,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="300"
         WindowStyle="None"
-        ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        Background="Transparent"
-        AllowsTransparency="True"
+        Background="#FF7012"
+        AllowsTransparency="False"
         MouseDown="Window_MouseDown">
-    <Grid>
-        <Border CornerRadius="20"                    
-            BorderThickness="2">
 
-            <Border.BorderBrush>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="LightGray" Offset="0"/>
-                </LinearGradientBrush>
-            </Border.BorderBrush>
-
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                    <GradientStop Color="#FF7012" Offset="0"/>
-                </LinearGradientBrush>
-            </Border.Background>
-
+    <Viewbox>
+        <Grid>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
@@ -38,10 +24,8 @@
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
-
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
-                        <ColumnDefinition Width="25"/>
                         <ColumnDefinition Width="25"/>
                         <ColumnDefinition Width="20"/>
                     </Grid.ColumnDefinitions>
@@ -120,7 +104,7 @@
                 <StackPanel Width="220"                   
                             Grid.Row="1"
                             Orientation="Vertical"
-                            Margin="0,0,0,0">
+                            Margin="0,0,0,30">
 
                     <TextBlock Text="Find ID"
                                Foreground="White"
@@ -221,6 +205,6 @@
 
                 </StackPanel>
             </Grid>
-        </Border>
-    </Grid>
+        </Grid>
+    </Viewbox>
 </Window>

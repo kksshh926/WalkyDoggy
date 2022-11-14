@@ -8,7 +8,7 @@
       xmlns:us="clr-namespace:Walkydoggy.UserContorls"
       xmlns:local="clr-namespace:Walkydoggy.View"
       mc:Ignorable="d" 
-      d:DesignHeight="550" d:DesignWidth="800"
+      d:DesignHeight="550" d:DesignWidth="900"
       Loaded="Page_Loaded"
       Title="Paging">
 
@@ -20,9 +20,9 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Border  CornerRadius="20 0 0 20" Background="#FEFEFE"/>
+            <Border  Background="#FEFEFE"/>
 
-            <Border  CornerRadius="0 20 20 0" Grid.Column="1" Background="#FF7012"/>
+            <Border  Grid.Column="1" Background="#FF7012"/>
         </Grid>
 
         <!--Grid Controls-->
@@ -98,7 +98,7 @@
                     <TextBox Name="txt_SearchText" Text="{Binding Path=SearchText, UpdateSourceTrigger=PropertyChanged}" TextChanged="txt_SearchText_TextChanged" Margin="15 0" VerticalAlignment="Center" Foreground="#B0B9C6" Panel.ZIndex="1"/>
                     <TextBox Foreground="#4C4C4C" Margin="10 0" Name="textBoxFilter" Style="{StaticResource filterTextBox}"/>
                 </Grid>
-                <DataGrid ItemsSource="{Binding BoardList}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" MouseDoubleClick="membersDataGrid_MouseDoubleClick">
+                <DataGrid ItemsSource="{Binding BoardList}" Margin="10" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" MouseDoubleClick="membersDataGrid_MouseDoubleClick">
                     <DataGrid.Columns>
                         <DataGridCheckBoxColumn Header="C" CanUserResize="False" Width="auto">
                             <DataGridCheckBoxColumn.HeaderTemplate>
@@ -109,7 +109,7 @@
                         </DataGridCheckBoxColumn>
                         <DataGridTextColumn Header="NUM"  IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Number}"/>
                         <DataGridTextColumn Header="BREED" IsReadOnly="True" Width="100" Binding="{Binding Breed}"/>
-                        <DataGridTemplateColumn Header="TITLE" IsReadOnly="True" Width="100"/>
+                        <DataGridTextColumn Header="ID" IsReadOnly="True" Width="100" Binding="{Binding Id}"/>
                     </DataGrid.Columns>
                 </DataGrid>
 

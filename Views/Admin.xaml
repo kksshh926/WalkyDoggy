@@ -1,0 +1,184 @@
+﻿<Page x:Class="Walkydoggy.Views.Admin"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:us="clr-namespace:Walkydoggy.UserContorls"
+      xmlns:local="clr-namespace:Walkydoggy.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="550" d:DesignWidth="800"
+      Title="Paging">
+
+    <Grid>
+        <!--Grid Background-->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Margin="0,0,0,0" Background="White">
+                <Viewbox Grid.Column="0" OpacityMask="White">
+
+                    <StackPanel
+                            Grid.Row="0"
+                            Orientation="Vertical"
+                            Margin="0,0,0,30">
+
+                        <Label Content="[ User Info ]" FontSize="30" Foreground="#FF7012" FontWeight="Heavy" FontFamily="Montserrat" HorizontalAlignment="Center"  Margin="0,0,0,0" VerticalAlignment="Top" Grid.RowSpan="2" Grid.Row="0"/>
+                        <Grid Margin="10,20,0,-15">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="113*"/>
+                                <RowDefinition Height="101*"/>
+                                <RowDefinition Height="301*"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Content="당신은 누구입니까? : " Foreground="#FF7012" FontWeight="ExtraBold" FontFamily="Montserrat" HorizontalAlignment="Left" Height="30" Margin="100,0,0,0" VerticalAlignment="Top" Width="125" Grid.RowSpan="2" Grid.Row="1"/>
+                            <ComboBox  ItemsSource="{Binding Whoiam}" 
+                    SelectedItem="{Binding Selectedwho}"
+                    HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Margin="230,0,0,0" 
+                    TextOptions.TextFormattingMode="Display" Background="#FFF9E4B0" BorderBrush="#FFF9E4B0" Foreground="Black" Grid.RowSpan="2" Grid.Row="1" >
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding RuDog}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+
+                            </ComboBox>
+                            <Label Content="ID : " Foreground="#FF7012" FontWeight="ExtraBold" FontFamily="Montserrat" HorizontalAlignment="Left" Height="30" Margin="100,30,0,0" VerticalAlignment="Top" Width="80"  Grid.Row="1"/>
+                            <Label Content="Name  :" Foreground="#FF7012" FontWeight="ExtraBold" FontFamily="Montserrat" HorizontalAlignment="Left" Height="30" Margin="100,80,0,0" VerticalAlignment="Top" Width="80"  Grid.Row="1"/>
+                            <Label Content="E-mail  :" Foreground="#FF7012" FontWeight="ExtraBold" FontFamily="Montserrat" HorizontalAlignment="Left" Height="30" Margin="100,110,0,0" VerticalAlignment="Top" Width="80"  Grid.Row="1"/>
+                            <Label Content="Kakao Id:" Foreground="#FF7012" FontWeight="ExtraBold" FontFamily="Montserrat" HorizontalAlignment="Left" Height="30" Margin="100,135,0,0" VerticalAlignment="Top" Width="88"  Grid.Row="1"/>
+                            <Label Content="Profile :" Foreground="#FF7012" FontWeight="ExtraBold" FontFamily="Montserrat" HorizontalAlignment="Left" Height="30" Margin="100,177,0,0" VerticalAlignment="Top" Width="80"  Grid.Row="1"/>
+                            <Label Content="Bio :" Foreground="#FF7012" FontWeight="ExtraBold" FontFamily="Montserrat" HorizontalAlignment="Left" Height="30" Margin="20,10,0,0" VerticalAlignment="Top" Width="80"  Grid.Row="2"/>
+                            <TextBox Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource filterTextBox}" FontWeight="SemiBold" Foreground="#4C4C4C" HorizontalAlignment="Left" Height="20" Margin="170,35,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="130" Background="#FFF9E4B0" Grid.Row="1"/>
+                            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource filterTextBox}" FontWeight="SemiBold" Foreground="#4C4C4C"  HorizontalAlignment="Left" Height="20" Margin="170,85,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="130" Background="#FFF9E4B0" Grid.Row="1"/>
+                            <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource filterTextBox}" FontWeight="SemiBold" Foreground="#4C4C4C"  HorizontalAlignment="Left" Height="20" Margin="170,110,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="130" Background="#FFF9E4B0" Grid.Row="1"/>
+                            <TextBox Text="{Binding KakaoId, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource filterTextBox}" FontWeight="SemiBold" Foreground="#4C4C4C"  HorizontalAlignment="Left" Height="20" Margin="170,135,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="130" Background="#FFF9E4B0" Grid.Row="1"/>
+                            <TextBox Text="{Binding Bio, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource filterTextBox}" FontWeight="SemiBold" Foreground="#4C4C4C"  HorizontalAlignment="Left" Height="70" Margin="70,10,0,0" TextWrapping="Wrap" Background="#FFF9E4B0" VerticalAlignment="Top" Width="300" Grid.Row="2"/>
+                            <TextBox Name="txt_PhotoPath" Style="{StaticResource filterTextBox}" FontWeight="SemiBold" Foreground="#4C4C4C" HorizontalAlignment="Left" Height="70" Margin="170,170,0,0" TextWrapping="Wrap" Text="photos" VerticalAlignment="Top" Width="130" Background="#FFF9E4B0" Grid.Row="1"/>
+
+                            <Button x:Name="btnPhoto" Content="Submit" FontWeight="Bold" Cursor="Hand" FontFamily="Montserrat" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,250,0,0" Height="20" Width="50" Grid.Row="1" BorderBrush="{x:Null}" RenderTransformOrigin="0.45,0.5">
+                                <Button.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform X="0"/>
+                                    </TransformGroup>
+                                </Button.RenderTransform>
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background" Value="#FF7012"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#FFCA6C"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5"></Setter>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+
+                            <Button x:Name="btnCorrect"                          
+                            BorderThickness="0"
+                            Content="CORRECT"
+                            FontWeight="Bold"
+                            Foreground="White"
+                            FontSize="12"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"                           
+                            Margin="100,100,203,0"
+                            Grid.Row="2">
+
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background" Value="#FF7012"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#FFCA6C"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="20"></Setter>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+
+                            <Button x:Name="btnDelete"                          
+                            BorderThickness="0"
+                            Content="DELETE"
+                            FontWeight="Bold"
+                            Foreground="White"
+                            FontSize="12"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"                           
+                            Margin="210,100,92,0"
+                            Grid.Row="2" Height="40" Width="100">
+
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background" Value="#FF7012"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#FFCA6C"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="20"></Setter>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </Grid>
+
+                    </StackPanel>
+                </Viewbox>
+            </Grid>
+        </Grid>
+
+        <!--Grid Controls-->
+        <Grid Margin="435,0,0,0" Background="#FFFF7012">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Viewbox Grid.Column="1" OpacityMask="#FFFF7012" Height="500">
+                <StackPanel Grid.Column="1" Background="#FFFF7012" Height="500">
+                    <DataGrid ItemsSource="{Binding UserList}" RowStyle="{DynamicResource DataGridRowStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyle1}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,7,0,0">
+                        <DataGrid.Columns>
+                            <DataGridCheckBoxColumn Header="C" CanUserResize="False" Width="auto">
+                                <DataGridCheckBoxColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <CheckBox/>
+                                    </DataTemplate>
+                                </DataGridCheckBoxColumn.HeaderTemplate>
+                            </DataGridCheckBoxColumn>
+                            <DataGridTextColumn Header="ID"  IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Number}"/>
+                            <DataGridTextColumn Header="NAME" IsReadOnly="True" Width="auto" Binding="{Binding Breed}"/>
+                            <DataGridTextColumn Header="E-MAIL" IsReadOnly="True" Width="auto" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="KAKAO ID" IsReadOnly="True" Width="auto" Binding="{Binding Id}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <!--Members Data Grid-->
+
+                </StackPanel>
+            </Viewbox>
+        </Grid>
+
+    </Grid>
+</Page>
