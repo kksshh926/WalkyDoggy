@@ -37,7 +37,7 @@ namespace Walkydoggy.Views
             this.InitTime();
         }
 
-        
+
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             NavigationService.LoadCompleted += this.NavigationService_LoadCompleted;
