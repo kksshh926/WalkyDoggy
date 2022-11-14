@@ -14,9 +14,7 @@ namespace Walkydoggy.Models
     public static class MyMqtt
     {
         // 서브스크립 클라이언트 인스턴스 선언
-        public static MqttClient client;
-
-        public static event EventHandler MqttMsgPublishReceivedHandler;
+        public static MqttClient client = new MqttClient(Common.BROKER_IP);
 
         public static void M2MqttInitializeClient()
         {
@@ -29,8 +27,6 @@ namespace Walkydoggy.Models
                 //로그인 정보 체크
                 if (Common.UserInfo == null)
                     throw new Exception("로그인을 진행해주세요.");
-
-                client = new MqttClient(Common.BROKER_IP);
 
                 //토픽 새로 입력
                 //토픽 요소 생성
@@ -48,9 +44,9 @@ namespace Walkydoggy.Models
                 }
 
                 //Mqtt Client 구독 토픽 설정
-                client.Subscribe(real_topics.ToArray(), real_topics.Select(x => MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE).ToArray());
+                var subscribe = client.Subscribe(real_topics.ToArray(), real_topics.Select(x => MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE).ToArray());
                 //Mqtt Client 연결
-                client.Connect(Guid.NewGuid().ToString());
+                var connect = client.Connect(Guid.NewGuid().ToString());
             }
             catch (Exception ex)
             {

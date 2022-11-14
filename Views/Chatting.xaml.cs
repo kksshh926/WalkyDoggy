@@ -36,9 +36,9 @@ namespace Walkydoggy.Views
             //각 채팅창에 대화 대상자 Tag 지정
             this.Tag = receive_id;
             //메시지큐 수신 이벤트 추가
-            MyMqtt.MqttMsgPublishReceivedHandler += this.ReceiveMqttMessage;
+            MyMqtt.client.MqttMsgPublishReceived += this.ReceiveMqttMessage;
             //대화창 타이틀 지정
-            this.Title =$@"{receive_id}님과의 대화";
+            this.Title = $@"{receive_id}님과의 대화";
             //시작 메시지 설정
             if (start_message != null)
                 this.viewModel.Messages.Add(new Message() { Name = receive_id, Content = start_message });
@@ -79,7 +79,7 @@ namespace Walkydoggy.Views
                 {
                     pup_type = Models.Enum.MqttPublishType.Chat,
                     message = content,
-                    pup_name =  Common.UserInfo.Id
+                    pup_name = Common.UserInfo.Id
                 };
 
                 //Nuget pakage에서 Nutonsoft Json 설치후 Json 가공을 위해 사용
@@ -122,7 +122,7 @@ namespace Walkydoggy.Views
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             //이벤트 다시 회수 (중요)
-            MyMqtt.MqttMsgPublishReceivedHandler -= this.ReceiveMqttMessage;
+            MyMqtt.client.MqttMsgPublishReceived -= this.ReceiveMqttMessage;
         }
     }
 }

@@ -31,7 +31,7 @@ namespace Walkydoggy
             InitializeComponent();
 
             //메시지큐 수신 이벤트 추가
-            MyMqtt.MqttMsgPublishReceivedHandler += this.ReceiveMqttMessage;
+            MyMqtt.client.MqttMsgPublishReceived += this.ReceiveMqttMessage;
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -86,6 +86,11 @@ namespace Walkydoggy
                 }
 
             });
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MyMqtt.client.MqttMsgPublishReceived -= this.ReceiveMqttMessage;
         }
     }
 }
