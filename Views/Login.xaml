@@ -10,7 +10,6 @@
         Title="Login" Height="550" Width="800"
         Background="White">
     <Grid >
-
         <Border>
             <Viewbox>
                 <StackPanel Width="220"
@@ -166,7 +165,7 @@
 
                         <Button x:Name="btn_Reset_ID"                          
                             BorderThickness="0"
-                            Content="Reset ID"
+                            Content="Find ID"
                             Background="White"
                             FontSize="12"
                             FontWeight="Bold"
@@ -206,7 +205,7 @@
 
                         <Button x:Name="btn_Reset_PSSWD"                          
                             BorderThickness="0"
-                            Content="Reset Password"
+                            Content="Find Password"
                             Background="White"
                             FontSize="12"
                             FontWeight="Bold"

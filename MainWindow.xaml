@@ -5,34 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Walkydoggy"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="800"
-        WindowStyle="SingleBorderWindow"
+        Title="MainWindow" Height="500" Width="800"
+        WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        Background="Transparent"
+        Background="White"
         AllowsTransparency="False"
         MouseDown="Window_MouseDown">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition>
-                
             </ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Border CornerRadius="20"                    
-            BorderThickness="2"
-            Opacity="0.95">
-
-            <Border.BorderBrush>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="LightGray" Offset="0"/>
-                </LinearGradientBrush>
-            </Border.BorderBrush>
-        </Border>
 
         <Viewbox>
-
-                <Frame Source="/Views/Login.xaml"></Frame>
-            </Viewbox>
-            <Grid>
+            <Frame Source="/Views/Login.xaml"></Frame>
+        </Viewbox>
+       
+        <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80"/>
                     <RowDefinition/>

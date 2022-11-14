@@ -5,27 +5,15 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Walkydoggy.View"
       mc:Ignorable="d" 
-      d:DesignHeight="550" d:DesignWidth="800"
+      Height="auto" Width="auto"
       Loaded="Page_Loaded"
-      
+      Background="#FF7012"
       Title="Chat">
 
-    <Border CornerRadius="20"                    
-            BorderThickness="2"
-            Opacity="0.95">
-        
-        <Border.BorderBrush>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="LightGray" Offset="0"/>
-            </LinearGradientBrush>
-        </Border.BorderBrush>
-
-        <Border.Background>
-            <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                <GradientStop Color="#FF7012" Offset="0"/>
-            </LinearGradientBrush>
-        </Border.Background>
-
+    <StackPanel
+                            Grid.Row="1"
+                            Orientation="Vertical"
+                            Margin="160,20,160,0">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -44,7 +32,7 @@
                     <Label Content="TIME : " Foreground="White" FontWeight="Bold" FontFamily="Montserrat" HorizontalAlignment="Left" Height="30" Margin="80,0,0,0" VerticalAlignment="Top" Width="125" Grid.RowSpan="2" Grid.Row="1"/>
                     <ComboBox Name="cmb_Year"  ItemsSource="{Binding Whatyear}" SelectedValue="{Binding SelectYear}"
                     SelectedItem="{Binding Selectyear}"
-                    HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Margin="130,0,0,0" 
+                    HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="130,0,0,0" 
                     TextOptions.TextFormattingMode="Display" Background="#FFF9E4B0" BorderBrush="#FFF9E4B0" Foreground="Black" Grid.RowSpan="2" Grid.Row="1" >
                         <!--<ComboBox.ItemTemplate>
                         <DataTemplate>
@@ -53,7 +41,7 @@
                     </ComboBox.ItemTemplate>-->
                     </ComboBox>
 
-                    <Label Content="년" Foreground="White" FontWeight="Bold" FontFamily="Montserrat" HorizontalAlignment="Left" Height="30" Margin="180,0,0,0" VerticalAlignment="Top" Width="125" Grid.RowSpan="2" Grid.Row="1"/>
+                    <Label Content="년" Foreground="White" FontWeight="Bold" FontFamily="Montserrat" HorizontalAlignment="Left" Height="30" Margin="190,0,0,0" VerticalAlignment="Top" Width="125" Grid.RowSpan="2" Grid.Row="1"/>
 
                     <ComboBox Name="cmb_Month"  ItemsSource="{Binding Whatmonth}" SelectedValue="{Binding SelectMonth}"
                     SelectedItem="{Binding Selectmonth}"
@@ -101,33 +89,31 @@
                 </Grid>
                 <Button Name="btnStartChat" Margin="30" Click="Button_Click_1" Foreground="#FF7012" FontSize="15" FontWeight="Bold" FontFamily="Montserrat" Cursor="Hand"  >채팅하기
                     <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Background" Value="White"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#FFCA6C"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="White"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FFCA6C"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
 
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Width="150" Height="40"
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="150" Height="40"
                                         CornerRadius="20"
                                         Background="{TemplateBinding Background}">
-                            <ContentPresenter VerticalAlignment="Center"
+                                <ContentPresenter VerticalAlignment="Center"
                                                       HorizontalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
                 </Button>
-            </StackPanel>
-            
-        </Grid>
-        
-        
-    </Border>
 
+            </StackPanel>
+        </Grid>
+
+            </StackPanel>
 </Page>
 

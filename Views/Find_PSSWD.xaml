@@ -10,45 +10,28 @@
         mc:Ignorable="d"
         Title="FindPW" Height="400" Width="300"
         WindowStyle="None"
-        ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        Background="Transparent"
-        AllowsTransparency="True"
-        MouseDown="Window_MouseDown"
-       >
-    <Grid>
-        <Border CornerRadius="20"                    
-            BorderThickness="2">
+        Background="#FF7012"
+        AllowsTransparency="False"
+        MouseDown="Window_MouseDown">
+    <Viewbox>
+        <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-            <Border.BorderBrush>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="LightGray" Offset="0"/>
-                </LinearGradientBrush>
-            </Border.BorderBrush>
+            <Grid Grid.Row="0">
 
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
-                    <GradientStop Color="#FF7012" Offset="0"/>
-                </LinearGradientBrush>
-            </Border.Background>
-
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-
-                <Grid Grid.Row="0">
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="25"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
                         <ColumnDefinition Width="25"/>
                         <ColumnDefinition Width="20"/>
-                    </Grid.ColumnDefinitions>
+                </Grid.ColumnDefinitions>
 
 
-                    <Button x:Name="btnMinimize"                           
+                <Button x:Name="btnMinimize"                           
                             BorderThickness="0"
                             Content="ㅡ"
                             FontWeight="ExtraBold"
@@ -59,31 +42,31 @@
                             Grid.Column="1"
                             Click="btnMinimize_Click">
 
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="#FFCA6C"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="LightGray"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FFCA6C"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="LightGray"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
 
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Width="18" Height="18"
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="18" Height="18"
                                         CornerRadius="9"
                                         Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center"
+                                <ContentPresenter VerticalAlignment="Center"
                                                       HorizontalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
 
-                    </Button>
+                </Button>
 
-                    <Button x:Name="btnClose"                          
+                <Button x:Name="btnClose"                          
                             BorderThickness="0"
                             Content="X"
                             Foreground="White"
@@ -94,50 +77,50 @@
                             Grid.Column="2"
                             Click="btnClose_Click">
 
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="#FFCA6C"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="LightGray"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FFCA6C"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="LightGray"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
 
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Width="18" Height="18"
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="18" Height="18"
                                         CornerRadius="9"
                                         Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center"
+                                <ContentPresenter VerticalAlignment="Center"
                                                       HorizontalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
 
-                </Grid>
-                <StackPanel Width="220"                   
+            </Grid>
+            <StackPanel Width="220"                   
                             Grid.Row="1"
                             Orientation="Vertical"
-                            Margin="0,0,0,0">
+                            Margin="0,0,0,30">
 
-                    <TextBlock Text="Find Password"
+                <TextBlock Text="Find Password"
                                Foreground="White"
                                FontSize="25"
                                FontWeight="Heavy"
                                FontFamily="Montserrat"
                                HorizontalAlignment="Center"/>
 
-                    <TextBlock Text="E-mail"
+                <TextBlock Text="E-mail"
                                Foreground="White"
                                FontSize="15"
                                FontWeight="Bold"
                                FontFamily="Montserrat"                             
                                Margin="0,60,0,0"/>
 
-                    <TextBox x:Name="txtMail"
+                <TextBox x:Name="txtMail"
                              Text="{Binding Email}"
                              FontSize="15"
                              FontWeight="Medium"
@@ -151,21 +134,21 @@
                              Margin="0,5,0,0"
                              Padding="20,0,0,0">
 
-                        <TextBox.Background>
-                            <ImageBrush 
+                    <TextBox.Background>
+                        <ImageBrush 
                                         Stretch="None"
                                         AlignmentX="Left"/>
-                        </TextBox.Background>
-                    </TextBox>
+                    </TextBox.Background>
+                </TextBox>
 
-                    <TextBlock Text="Kakao Id"
+                <TextBlock Text="Kakao Id"
                                Foreground="White"
                                FontSize="15"
                                FontWeight="Bold"
                                FontFamily="Montserrat"                             
                                Margin="0,15,0,0"/>
 
-                    <TextBox x:Name="txtQuestion"
+                <TextBox x:Name="txtQuestion"
                              Text="{Binding KakaoId}"
                              FontSize="15"
                              FontWeight="Medium"
@@ -179,14 +162,14 @@
                              Margin="0,5,0,0"
                              Padding="20,0,0,0">
 
-                        <TextBox.Background>
-                            <ImageBrush 
+                    <TextBox.Background>
+                        <ImageBrush 
                                         Stretch="None"
                                         AlignmentX="Left"/>
-                        </TextBox.Background>
-                    </TextBox>
+                    </TextBox.Background>
+                </TextBox>
 
-                    <Button x:Name="btn_Find_PSSWD"                          
+                <Button x:Name="btn_Find_PSSWD"                          
                             BorderThickness="0"
                             Content="Find"
                             Foreground="#FF7012"                        
@@ -196,30 +179,30 @@
                             Cursor="Hand"                           
                             Margin="0,20,0,0" Click="btn_Find_PSSWD_Click">
 
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="White"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#FFCA6C"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="White"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FFCA6C"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
 
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Width="150" Height="40"
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="150" Height="40"
                                         CornerRadius="20"
                                         Background="{TemplateBinding Background}">
-                                    <ContentPresenter VerticalAlignment="Center"
+                                <ContentPresenter VerticalAlignment="Center"
                                                       HorizontalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-                </StackPanel>
-            </Grid>
-        </Border>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+        </Grid>
     </Grid>
+    </Viewbox>
 </Window>
