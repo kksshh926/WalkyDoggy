@@ -262,5 +262,20 @@ namespace Walkydoggy.ViewModels
         }
         //끝: 강아지 or 사람 설정 
 
+        //Admin
+        private List<UserItem> userList;
+        public List<UserItem> UserList
+        {
+            get { return this.userList; }
+            set { SetProperty<List<UserItem>>(ref userList, value); }
+        }
+
+    }
+    public class UserItem
+    {
+        public string Id { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string KakaoId { get; set; } = string.Empty;
     }
 }

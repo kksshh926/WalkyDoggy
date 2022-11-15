@@ -81,8 +81,16 @@ namespace Walkydoggy.View
                         //로그인 성공시 브로커 서버 초기화
                         MyMqtt.M2MqttInitializeClient();
 
-                        Uri uri = new Uri("/Views/Paging.xaml", UriKind.Relative);
-                        NavigationService.Navigate(uri);
+                        if (userid == "Admin" && userpw == "Admin")
+                        {
+                            Uri uri = new Uri("/Views/Admin.xaml", UriKind.Relative);
+                            NavigationService.Navigate(uri);
+                        }
+                        else
+                        {
+                            Uri uri = new Uri("/Views/Paging.xaml", UriKind.Relative);
+                            NavigationService.Navigate(uri);
+                        }
                         //MessageBox.Show("로그인 성공.");
                         return true;
 

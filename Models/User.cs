@@ -122,6 +122,44 @@ namespace Walkydoggy.Models
             }
         }
 
+        private string _Email;
+
+        public String Email
+        {
+            get
+            {
+                return _Email;
+            }
+            set
+            {
+                _Email = value;
+                OnPropertyChanged("Email");
+            }
+        }
+
+        private string _KakaoId;
+
+        public String KakaoId
+        {
+            get
+            {
+                return _KakaoId;
+            }
+            set
+            {
+                _KakaoId = value;
+                OnPropertyChanged("KakaoId");
+            }
+        }
+
+        public User(string id, string username, string email, string kakaoid)
+        {
+            Id = id;
+            Name = username;
+            Email = email;
+            KakaoId = kakaoid;
+        }
+
         //로그인 
         public User(string id, string pw)
         {
