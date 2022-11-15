@@ -154,8 +154,8 @@ namespace Walkydoggy.View
 
                     using (var cmd = conn.CreateCommand())
                     {
-                        cmd.CommandText = $@"INSERT INTO BOARD (imagefile, id, date_published, date, age, breed, nameofdog, plasticbag) values 
-                                                    (@imagefile, @id, @date_published, @date, @age, @breed, @nameofdog, @plasticbag)";
+                        cmd.CommandText = $@"INSERT INTO BOARD (post, imagefile, id, date_published, date, age, breed, nameofdog, plasticbag) values 
+                                                    (@post, @imagefile, @id, @date_published, @date, @age, @breed, @nameofdog, @plasticbag)";
 
                         if (File.Exists(this.txt_PhotoPath.Text))
                         {
@@ -165,6 +165,7 @@ namespace Walkydoggy.View
                         else
                             cmd.Parameters.Add(new MySqlParameter("imagefile", null));
 
+                        cmd.Parameters.Add(new MySqlParameter("post", this.viewModel.Post));
                         cmd.Parameters.Add(new MySqlParameter("id", Common.UserInfo.Id));
                         cmd.Parameters.Add(new MySqlParameter("date_published", DateTime.Now));
                         cmd.Parameters.Add(new MySqlParameter("date", new DateTime(this.viewModel.Selectyear.Value, this.viewModel.Selectmonth.Value, this.viewModel.Selectday.Value)));
